@@ -82,6 +82,50 @@ The first eligible participant, BRECO.BC15, underwent breast conserving surgery 
 \subsection{Cell and Gene QC is a Sample Individualised Process}
 
 
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l | l | l}
+		Study ID & Median Count & Lower Threshold & Upper Threshold & Median Absolute Deviation \\
+		\hline
+		BRECO.BC18 & 3504 & 415 & 29609 & 2.5 \\
+		BRECO.BC20.3p & 3243 & 384 & 27365 & 1.9 \\
+		BRECO.BC20.5p & & 247 & 21558 & 2.0 \\
+		BRECO.BC23 & &  pT3 55 mm pN1a (3/18) M0 & ER 3/8 PR 0/8 HER2 negative
+	\end{tabular}
+	\caption{Thresholds for Total Counts}
+	\label{tab: qc_thesholds_counts}
+\end{table}
+
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l | l | l}
+		Study ID & Median Count & Lower Threshold & Upper Threshold & Median Absolute Deviation \\
+		\hline
+		BRECO.BC18 & 1209 & 246 & 5934 & 2.2 \\
+		BRECO.BC20.3p & 227 & 7544 & 2.3 \\
+		BRECO.BC23 & pT3 55 mm pN1a (3/18) M0 & ER 3/8 PR 0/8 HER2 negative
+	\end{tabular}
+	\caption{Thresholds for Total Features}
+	\label{tab: qc_thesholds_features}
+\end{table}
+
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l | l | l}
+		Study ID & Median Mitochondrial Content & Lower Threshold (\%) & Upper Threshold (\%) \\
+		\hline
+		BRECO.BC18 & 7.19 & 0 & 20 \\
+		BRECO.BC20.3p & 0 & 20 & 2.3 \\
+		BRECO.BC23 & pT3 55 mm pN1a (3/18) M0 & ER 3/8 PR 0/8 HER2 negative
+	\end{tabular}
+	\caption{Thresholds for Mitochondrial Counts}
+	\label{tab: qc_thesholds_mito_percent}
+\end{table}
+
+
+
 \subsection{Unsupervised Clustering identifies Cellular Heterogeneity in Human Breast Cancer}
 \label{sub:diagnostic}
 
