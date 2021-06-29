@@ -16,9 +16,9 @@ For larger chunks, like this paragraph or indeed entire figures, you can use the
 
 Read through the \verb|Oxford_Thesis.tex| file to see the various options for one- and two-sided printing, including or excluding the separate abstract page, and turning corrections and draft footer on or off, and the separate option to centre your text on the page (for PDF submission) or offset it (for binding).  There is also a separate option for master's degree submissions, which changes identifying information to candidate number and includes a word count.  (Unfortunately, \LaTeX has a hard time doing word counts automatically, so you'll have to enter the count manually if you require this.)
 
-\section{Results}\label{app:imaging}
+\section{Results}
+%\label{app:imaging}
 
-Within months of Röntgen's discovery of the X-ray in \mccorrect{1895}\cite{gagliardi_rontgen_1996}, cardiac pathology was being investigated via non-invasive imaging \cite{gagliardi_cardiac_1996}.  Over the intervening years, cardiac imaging modalities and techniques have advanced significantly.  Clinically, cardiac imaging is used for two broad purposes: diagnosis of pathophysiology and guidance of interventional procedures.  These applications impose different requirements on imaging equipment, image acquisition time, computational complexity, spatial and temporal resolution, and tissue discrimination.  The common diagnostic and interventional cardiac imaging techniques in current clinical practice are reviewed below.  An accessible introduction to the physics of medical imaging can be found in Webb's \textit{Introduction to Biomedical Imaging} \cite{webb_introduction_2002}.  A comprehensive overview of the use of imaging in clinical cardiology is presented in Leeson's \textit{Cardiovascular Imaging} \cite{leeson_cardiovascular_2011}.
 
 \subsection{Patient Samples and Clinical Characteristics}
 I collected three patient samples at the Churchill hospital, Oxford as part of the BRECO study (REC reference 19/SC/0025) between 28th January 2020 - 23rd March 2020. BRECO is a single centre prospective study investigating the relationship between breast cancer and the surrounding tissues. Human tissue, blood samples and clinical data were collected from patients undergoing primary breast surgery. Exclusion criteria included neoadjuvant chemotherapy or radiotherapy.
@@ -29,14 +29,15 @@ My sample recruitment focused solely on ER negative, PR negative, HER2 negative 
 
 The clinical and histological characteristics of the recruited patients are detailed in Table \ref{tab: clinical_characteristics}. Patients were identified for recruitment on the basis of ER/PR/HER2 immunohistochemistry status conducted on the diagnostic breast biopsy performed in the NHS breast cancer triple assessment clinic. All recruited patients were ER 0/8 PR 0/8 HER2 negative in the diagnostic biopsy. However, receptor status can vary when repeated on the definitive final surgical specimen.
 
-\begin{table}[h]
+\begin{table}
 	\centering
 	\begin{tabular}{l | l | l}
 		Study ID & TNM Stage & Hormone Receptor Status \\
 		\hline
 		BRECO.BC18 & pT2 50 mm pN1a (1/2) M0 & ER 2/8 PR 0/8 HER2 negative \\
 		BRECO.BC20 & pT4 110 mm pN3a (33/33) M1 & ER 0/8 PR 0/8 HER2 negative \\
-		BRECO.BC23 & pT3 55 mm pN1a (3/18) M0 & ER 3/8 PR 0/8 HER2 negative
+		BRECO.BC23 & pT3 55 mm pN1a (3/18) M0 & ER 3/8 PR 0/8 HER2 negative \\
+		\hline
 	\end{tabular}
 	\caption{Clinical Characteristics}
 	\label{tab: clinical_characteristics}
@@ -80,51 +81,80 @@ The BRECO study recruits patients within the Oxford University NHS Foundation Tr
 The first eligible participant, BRECO.BC15, underwent breast conserving surgery with an intra-operative research biopsy at the Horton General hospital. The geographical spread in the process, participant treatment in Banbury and laboratory facilities in Oxford, presented additional unique challenges since the experimental protocol for single cell RNA sequencing is most effective and efficient when conducted on fresh tissue. I therefore collected the biopsy directly into a vial of warmed Dmem/F12/HEPES medium supplemented with human serum which was immediately placed into a 37 \textdegree{}C water bath within a thermos flask. Mechanical dissociation was facilitated during the journey from Banbury to Oxford by gentle continual rotation of the thermos flask. The entire process required close collaboration with my colleague Miss Ashvina Segaran regarding transfer of equipment and supplies to/from Banbury and with Dr. Thomas Carroll to ensure the prompt continuation of the experimental protocol on arrival back in Oxford. Cell viability was poor at 7\% with the modified protocol and therefore, all subsequent samples were collected exclusively from the Churchill or John Radcliffe hospital.
 
 \subsection{Cell and Gene QC is a Sample Individualised Process}
+Single cell RNA sequencing offers the capacity to interrogate cellular heterogeneity at high resolution. A major unresolved challenge is the technical noise inherent in single cell data arising due to dropout events, library size differences and amplification bias \cite{Eraslan2019}. A dropout event occurs when an expressed gene fails to be detected due to low RNA capture rates. Dropout events are distinct to a 'true biological' zero count which, in contrast, is a faithful representation of the native transcriptional state \cite{Eraslan2019}. The distinction between a 'true' and 'false' zero count has yet to be clearly defined. Therefore, traditional imputation methods used to correct for missing values may not be suitable for scRNA-seq data.
 
+A range of alternative approaches for quality control (QC) are being explored. These methods include using:
+i. Spike-in molecules
+ii. Housekeeping genes 
+iii. Library size correction
 
-\begin{table}[h]
+i. Spike-in Normalisation
+Spike-in molecules consist of RNA artificially added to each cell lysate in the same volume. Therefore, variations in concentration will be similar between endogenous and spike-in molecules between samples \cite{Katayama2013}. The spike-in concentration is known a priori which then allows for the generation of spike-in normalisation factors to correct for global changes between samples \cite{Katayama2013}. Spike-in normalisation is suitable for plate-based single cell technologies such as Smart-seq2. There is no comparable method available for droplet-based single cell techniques, such as the 10X Chromium system used for my single cell breast cancer samples. Spike-in normalisation was therefore not a viable option for my experimental design.
+
+ii. Housekeeping Genes
+Housekeeping (HK) genes, such as \textbf{GAPDH} and \textbf{ACTB}, are genes which are required for basic cellular function. HK genes have been explored as potential single cell QC markers under the assumption that they are highly and consistently expressed between good quality samples. This assumption holds true in bulk RNA-seq studies with HK genes demonstrating an uniform expression distribution. However, single cell qPCR has demonstrated high variation in HK gene expression between single endodermal cells derived from human embryonic stem cells \cite{Oyolu2012}. Therefore, selection of single cells based on HK gene expression may result in loss of true biological variation.
+
+iii. 
+
+\begin{table}[ht]
 	\centering
-	\begin{tabular}{l | l | l}
-		Study ID & Median Count & Lower Threshold & Upper Threshold & Median Absolute Deviation 		\\
+	\small
+	\renewcommand{\arraystretch}{1.4}
+	{\columnwidth}{5}
+	\begin{tabular}{|l| c | c | c | c |}
 		\hline
-		BRECO.BC18 		& 3504 & 415 & 29609 & 2.5 		\\
+		Study ID	&	Median Count & Lower Threshold & Upper Threshold & Median Absolute Deviation \\
+		\hline
+		BRECO.BC18 		& 3504 & 415 & 29609 & 2.5 	\\
+		
 		BRECO.BC20.3p 	& 3243 & 384 & 27365 & 1.9 		\\
+		
 		BRECO.BC20.5p 	& 2309 & 277 & 19280 & 1.9 		\\
-		BRECO.BC23 		& 1965 & 154 & 25068 & 2.95
+		
+		BRECO.BC23 		& 1965 & 154 & 25068 & 2.95\\
+		\hline
 	\end{tabular}
 	\caption{Thresholds for Total Counts}
 	\label{tab: qc_thesholds_counts}
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[ht]
 	\centering
-	\begin{tabular}{l | l | l}
-		Study ID & Median Count & Lower Threshold & Upper Threshold & Median Absolute Deviation 		\\
+	\small
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{| l | c | c | c | c |}
+		\hline
+		Study ID	&	Median Features & Lower Threshold & Upper Threshold & Median Absolute Deviation \\
 		\hline
 		BRECO.BC18 		& 1209 & 246 & 5934 & 2.2 	\\
 		BRECO.BC20.3p 	& 1310 & 236 & 7262 & 2.25	\\
 		BRECO.BC20.5p 	& 962  & 201 & 4597 & 2.2 	\\
-		BRECO.BC23 		& 830  & 166 & 4158 & 2.8
+		BRECO.BC23 		& 830  & 166 & 4158 & 2.8	\\
+		\hline
 	\end{tabular}
 	\caption{Thresholds for Total Features}
 	\label{tab: qc_thesholds_features}
 \end{table}
 
-
-\begin{table}[h]
+\begin{table}
 	\centering
-	\begin{tabular}{l | l | l}
+	\small
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{| l | c | c | c | c |}
+		\hline
 		Study ID & Median Mitochondrial Content & Lower Threshold (\%) & Upper Threshold (\%) \\
 		\hline
 		BRECO.BC18 		& 7.19 & 0 & 20 \\
 		BRECO.BC20.3p 	& 5.02 & 0 & 20 \\
 		BRECO.BC20.5p 	& 2.58 & 0 & 16 \\
-		BRECO.BC23 		& 4.77 & 0 & 20
+		BRECO.BC23 		& 4.77 & 0 & 20 \\
+		\hline
 	\end{tabular}
 	\caption{Thresholds for Mitochondrial Counts}
 	\label{tab: qc_thesholds_mito_percent}
 \end{table}
+
 
 
 

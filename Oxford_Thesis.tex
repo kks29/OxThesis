@@ -44,13 +44,15 @@
 \correctionstrue
 
 
+% Additional Packages
+\usepackage{verbatim}
+%\usepackage{latin}
+
 %%%%% BIBLIOGRAPHY SETUP
 
 % Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
 % The options included below are just very basic "sciencey" and "humanitiesey" options to get started.
 % If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
-% If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
-% Either way, you'll have to choose and configure an appropriate bibliography format...
 
 % The science-type option: numerical in-text citation with references in order of appearance.
 \usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
@@ -64,27 +66,15 @@
 \addbibresource{/media/karen/dphil/Thesis/karen_thesis_2021_b/OxThesis/literature/thesis_2021.bib}
 
 
-% Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
-%\numberwithin{equation}{subsection}
-
 
 
 
 %%%%% THESIS / TITLE PAGE INFORMATION
-% Everybody needs to complete the following:
 \title{Analysis of Cellular Heterogeneity in Breast Cancer by Single Cell Sequencing}
 \author{Dr. Karen Sayal}
 \college{St. Cross College}
 
-% Master's candidates who require the alternate title page (with candidate number and word count)
-% must also un-comment and complete the following three lines:
-%\masterssubmissiontrue
-%\candidateno{933516}
-%\wordcount{28,815}
-
-% Uncomment the following line if your degree also includes exams (eg most masters):
-%\renewcommand{\submittedtext}{Submitted in partial completion of the}
-% Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
+% Your full degree name.  
 \degree{Doctor of Philosophy}
 % Term and year of submission, or date if your board requires (eg most masters)
 \degreedate{Michaelmas 2021}
@@ -99,8 +89,7 @@
 	\renewcommand{\st}{\textsuperscript{st}}
 	\newcommand{\rd}{\textsuperscript{rd}}
 
-% Additional Packages
-\usepackage{verbatim}
+
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
@@ -148,11 +137,11 @@
 \maketitle
 
 %%%%% DEDICATION -- If you'd like one, un-comment the following.
-%\begin{dedication}
-%This thesis is dedicated to\\
+\begin{dedication}
+This thesis is dedicated to\\
 %someone\\
 %for some special reason\\
-%\end{dedication}
+\end{dedication}
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 \begin{acknowledgements}
@@ -203,8 +192,8 @@
 %%%%% CHAPTERS
 % Add or remove any chapters you'd like here, by file name (excluding '.tex'):
 \flushbottom
-\include{text/ch1-intro}
-\include{text/ch2-litreview}
+%\include{text/ch1-intro}
+%\include{text/ch2-litreview}
 \include{text/ch3}
 
 
