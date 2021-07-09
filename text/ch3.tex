@@ -3,47 +3,38 @@
 \minitoc
 
 \section{Introduction}
+Breast cancer is a dynamic 3D ecosystem characterised by complex inter-relationships between the tumour and non-tumour compartment underpinned by temporal and spatial evolutionary changes. Transcriptional responses provide a real-time snapshot of these cellular dynamics. However, until relatively recently, the investigation of spatially-determined patterns of response has been restricted by technological limitations.
 
+The investigation of spatial gene expression could be applied to many facets of tumour biology, such as the interface between the tumour and immune or vascular compartment. For my DPhil, I intended to focus primarily on spatial heterogeneity in the intra-tumoural hypoxic response. Hypoxia is defined by a deficit of oxygen relative to physiological demands. It is reflective of constantly adapting fluxes between cellular oxygen usage and oxygen diffusion, the latter of which is governed by the biomechanical properties of tissue. Therefore, the generation of regions of hypoxia cannot be purely stochastic. I aimed to compare the transcriptional heterogeneity between histological defined regions of hypoxia to identify globally-shared single cell transcriptional responses to hypoxia whilst also dissecting region specific elements in order to develop a high-resolution, holistic perspective on the hypoxic response.
 
 \section{Results}
-%\label{app:imaging}
 
 
 \subsection{Comparison of Emerging Spatial Transcriptomic Technologies}
-Slide-seq
-HDST
-NanoString
+%Biological systems are characterised by highly coordinated spatio-temporal gene expression patterns. Spatial patterns of gene expression are intricately linked with tissue identity and enable coordinated responses to micro-environmental stressors.%
 
-spatial resolution vs cost vs availability
-
-Biological systems are characterised by highly coordinated spatio-temporal gene expression patterns. Spatial patterns of gene expression are intricately linked with tissue identity and enable coordinated responses to micro-environmental stressors.
-
-Spatial transcriptomics is an emerging domain within the life sciences which enables gene expression detection whilst retaining the spatial location of RNA transcripts. The available techniques are divided broadly into three approaches: 										\
-i. Microdissected regions of interest														\
-ii. Fluorescence in situ hybridisation (FISH) based methods. 								\
-iii. Modifications of single cell sequencing techniques while allow Whole transcriptomic coverage. 																					\									
-
-Microdissection can be performed using laser capture. Tissue sections are prepared onto uncharged membrane glass slides which facilitates tissue extraction of dissected regions. Tissue is stained with cresyl violet to aid visualisation during dissection. The laser microdissection unit is paired with a microscopy unit so that regions of interest can be identified and catapulted into capture tubes for RNA capture. This brute-force approach offers low sample-throughput and is not amenable for wide scale coverage of tissue. High resolution capture is particularly problematic since it is difficult to achieve reliable extraction of single cells. The downstream RNA extraction process for low input RNA also requires significant protocol optimisation in a tissue specific manner.
+Spatial transcriptomics is an emerging domain within the life sciences which enables gene expression detection whilst retaining the spatial location of RNA transcripts. The available techniques are broadly divided into three approaches: 																\\
+i. Microdissected regions of interest														\\
+ii. Fluorescence in situ hybridisation (FISH) based methods. 								\\
+iii. Modifications of single cell sequencing techniques while allow Whole transcriptomic coverage. 																					\\									
+Microdissection can be performed using laser capture. Tissue sections are prepared onto uncharged membrane glass slides which facilitates tissue extraction of dissected regions. Tissue is stained with cresyl violet to aid visualisation during dissection. The laser microdissection unit is paired with a microscopy unit so that regions of interest can be identified and catapulted into PCR tubes for RNA capture. This brute-force approach offers low sample-throughput and is not amenable for wide scale coverage of tissue. High resolution capture is particularly problematic since it is difficult to achieve reliable extraction of single cells. The downstream RNA extraction process for low input RNA also requires significant protocol optimisation in a tissue specific manner.
 
 In contrast, in situ hydridisation approaches enable direct visualisation of RNA molecules within their native environment. Tissue is fixed after which mRNA is first reverse transcribed to cDNA. 
 Fluorescently labelled padlock probes complementary to the target of interest can then bind to the generated cDNA. Target amplification, required for downstream detection, is achieved by a process called rolling-circle amplification (RCA). RCA generates multiple copies of the padlock probe with inter-probe gaps filled by sequencing-by-ligation. The end product is imaged and decoded in a manner analogous to Illumina sequencing-by-synthesis. CARTANA and ReadCoor, companies acquired by 10X Genomics, offer commercial access to in situ hybridisation platforms.
 
 Lastly, spatial transcriptomics can be performed by in situ transcript capture followed by ex situ sequencing. There are a range of available options which generate a spatially profiled glass slide through different approaches. The Visium option entails a glass slide onto which a barcoded RT primer is printed. The barcoded primer encodes the x and y coordinate position of the array. Tissue is fixed, stained, imaged and permeabilised onto the array. Permeabilised mRNA hybridises to the barcoded primers and in situ RT is performed. The barcoded reads are then mapped back to the original tissue location following completion of library preparation and next generation sequencing. Visium offers limited spatial resolution: spatially profiled regions are 55 $\mu$m diameter circular spots.
 
-Slide-seq and High-Definition Spatial Transcriptomics (HDST) are conceptually similar to Visium. Polystyrene beads, each of 10 $\mu$m diameter, are attached in monolayer onto a glass coverslip in place of printing barcoded RT primers onto a glass slide. Each bead has a randomly attached unique spatial barcode. The bead location is not known a priori. Therefore, bead position is decoded in situ using sequencing-by-ligation. Sample preparation, permabilisation and library generation are similar to Visium. Slide-seq spatial resolution, governed by bead diameter, is higher than Visium and is akin to single cell resolution. HDST is extremely similar to Slide-seq except 2 $\mu$m diameter beads are used.
+Slide-seq and High-Definition Spatial Transcriptomics (HDST) are conceptually similar to Visium. In Slide-seq, polystyrene beads, each of 10 $\mu$m diameter, are attached in monolayer onto a glass coverslip in place of printing barcoded RT primers onto a glass slide. Each bead has a randomly attached unique spatial barcode. The bead location is not known a priori. Therefore, bead position is decoded in situ using sequencing-by-ligation. Sample preparation, permabilisation and library generation are similar to Visium. Slide-seq spatial resolution, governed by bead diameter, is higher than Visium and is akin to single cell resolution. HDST is extremely similar to Slide-seq, except 2 $\mu$m diameter beads are used.
 
-Slide-seq and HDST are only suitable for use on fresh frozen tissue. An analogous approach suitable for FFPE is provided by the Nanostring GeoMx Digitial Spatial Profiler.
+Slide-seq and HDST are only suitable for use on fresh frozen tissue. An analogous approach suitable for FFPE is provided by the Nanostring GeoMx Digitial Spatial Profiler. RNA probes linked with a photocleavable barcoded tag are added to the tissue section. User defined regions of interest consisting of 600 $\mu$m diameter circles are excited with UV light, enabling release of the RNA probes. The released read is quantified using the NanoString nCounter instrument. At the time of investigation in summer 2019, a targeted 200 tumour/immune gene panel was available. The GeoMx Spatial Profiling instrument was due to be available in Oxford by early 2020.
 
-Visium
-Slide-seq/HDST
-GeoMx
+Based on equipment availability, suitability for application in breast cancer tissue and cost, I elected to proceed with Slide-seq and ReadCoor/FISSEQ technology for investigation during the course of my DPhil. I acquired access to Slide-seq technology through direct collaboration with the technology developers which it would be provide a cost-effective platform for high-throughput delivery. ReadCoor/FISSEQ technology is suitable for FFPE, the most commonly used tissue preparation method in histological collections. I obtained early access to ReadCoor/FISSEQ technology. However, the acquisition costs and labour investment for the ReadCoor/FISSEQ turnkey solution is significantly higher than for Slide-seq.
 
-Set of factors: availabile, cost, tissue suitability.
 
 \subsection{Application of Slide-seq in Breast Cancer}
 \subsubsection{Development of Slide-seq Pipeline in Breast Cancer Biopsy Samples}
 
-After careful consideration and review of all spatial transcriptomic technologies, I elected to proceed with the use of Slide-seq on treatment naive fresh frozen breast cancer biopsies. Slide-seq is a novel technology which is not routinely available within Europe. The technology cannot be purchased from a commercial provider. At present, it is only available within the Macosko or Regev lab at the Broad Institute of MIT and Harvard, Boston, USA.
+I proceeedd with the use of Slide-seq on treatment naive fresh frozen breast cancer biopsies. Slide-seq is a novel technology and it is not routinely available within Europe. The technology cannot be purchased from a commercial provider. At present, it is only available within the Macosko or Regev lab at the Broad Institute of MIT and Harvard, Boston, USA.
 
 
 Therefore, I independently established a collaboration directly with the Macosko lab in order to proceed with this research program for my DPhil. I also established a bespoke training program within the Macosko lab for which I travelled to Boston, USA in November 2019. The training objectives were:
@@ -52,22 +43,22 @@ a. To develop expertise in the production of spatially barcoded beads and the ef
 b. To understand the process by which each bead is spatially profiled using in situ sequencing technology. \\
 c. To develop best practice techniques in sample selection, tissue placement onto spatial slides and the downstream processing for library generation.
 
-Upon completion of the training program in the US, I returned back to Oxford with a collection of pilot spatial slides to set up the novel experimental pipeline with the associated specialised reagents. The establishment of the in situ sequencing platform for the spatial slides required several years of optimisation by the Macosko lab. It would require \textasciitilde 1-2 years to develop an equivalent optimised platform in Oxford. My priority for the DPhil was to explore the application of spatial transcriptomic technologies in clinical breast cancer samples. Therefore, I aimed to establish a pipeline in which the fully profiled spatial slides would be prepared by the Macosko lab and I would process the spatial slides on clinical breast cancer samples in Oxford.
+Upon completion of the training program in the US, I returned back to Oxford with a collection of pilot spatial slides to set up the novel experimental pipeline with the associated specialised reagents. The establishment of the production and sequencing platform for the spatial slides required several years of optimisation by the Macosko lab. It would require \textasciitilde 1-2 years to develop an equivalent optimised platform in Oxford. My priority for the DPhil was to explore the application of spatial transcriptomic technologies in clinical breast cancer samples. Therefore, I aimed to establish a pipeline in which the fully profiled spatial slides would be prepared by the Macosko lab and I would process the spatial slides on clinical breast cancer samples in Oxford.
 
 Each spatial slide, referred to as a 'puck', is produced from a 0.17 mm thick glass coverslip which is fragile. I developed expertise in the correct and gentle handling of the coverslips to avoid the creation of cracks during the protocol. Cracks created during the tissue placement stage, in particular, would introduce spatial artefacts. Consequently, the correct selection of tweezer for handling of the pucks was essential. An iterative selection process using multiple pilot slides allowed the identification of a fine stainless steel tweezer (\#T4537-1EA Sigma) as optimal for puck handling.
 
-Slide-seq is suitable only for fresh frozen tissue. The sectioning of fresh frozen tissue is performed within a cryostat. Standard practice entails embedding tissue within OCT to provide a stable base from which sectioning is performed. However, OCT interferes with RNA hybridisation onto the puck. The placement of tissue within a cryostat was accordingly modified as part of the Slide-seq protocol. A small volume of OCT is placed to allow for tissue stabilisation. However, the upper layer of the tissue specimen is kept free of OCT. 
+Slide-seq is suitable only for fresh frozen tissue. The sectioning of fresh frozen tissue is performed within a cryostat. Standard practice entails embedding tissue within OCT to provide a stable base from which sectioning is performed. However, OCT interferes with RNA hybridisation onto the puck. The placement of tissue within a cryostat was accordingly modified as part of the Slide-seq protocol. A small volume of OCT is placed to allow for tissue stabilisation (figure \ref{fig:slideseq_cryostat_1}). However, the upper layer of the tissue specimen is kept free of OCT. 
 
-Breast cancer clinical biopsies are \textasciitilde 4 mm diameter and of variable shape and adipose composition. The physical characteristics of the biopsies presented significant additional challenges for accurate tissue placement onto the puck. Tissue sectioning and placement was performed with Dr. Esther Bridges, a very senior and experienced scientist. The skill and technical acumen of Dr. Bridges was an essential component required for the successful establishment of the Slide-seq pipeline.
+Breast cancer clinical biopsies are \textasciitilde 4 mm diameter and of variable shape and adipose composition as demonstrated in figures \ref{fig:slideseq_cryostat_2} and \ref{fig:slideseq_cryostat_3}. The physical characteristics of the biopsies presented significant additional challenges for accurate tissue placement onto the puck. Tissue sectioning and placement was performed with Dr. Esther Bridges, a very senior and experienced scientist. The skill and technical acumen of Dr. Bridges was an essential component required for the successful establishment of the Slide-seq pipeline.
 
 
 \begin{figure}[!htb]
 	\minipage{0.32\textwidth}
-		\left
+	\centering
 		\includegraphics[width=0.7\textwidth, angle=270]{figures/slideseq_cryostat_1.jpg} \hfill
-		\caption[Biopsy orientation in cryostat]{Biopsy \\ orientation in cryostat}
+		\caption[Biopsy orientation for Slide-seq]{Biopsy \\ orientation in cryostat}
 		\label{fig:slideseq_cryostat_1}
-	\endminipage\hfill
+	\endminipage
 	\minipage{0.32\textwidth}
 		\centering
 		\includegraphics[width=0.7\textwidth, angle=270]{figures/slideseq_cryostat_2.jpg} \hfill
@@ -84,23 +75,117 @@ Breast cancer clinical biopsies are \textasciitilde 4 mm diameter and of variabl
 
 
 
-
 \subsubsection{Optimisation of Slide-seq Protocol for Application in Breast Cancer}
-The optimised Slide-seq protocol has been published for investigation of murine brain tissue. Breast cancer tissue exhibits distinct histological differences compared to normal brain tissue: marked cellular heterogeneity, variable fibroblast composition, incoherence in spatial architecture. I therefore optimised the Slide-seq protocol for use in breast cancer, with a specific focus on optimising RNA hydribidisation onto the spatial beads. RNA hybridisation involves conflicting factors: sufficient duration to allow for adequate RNA capture whilst maintaining adequate spatial resolution without excessive lateral diffusion of RNA.
+The optimised Slide-seq protocol has been published for investigation in murine brain tissue. Breast cancer tissue exhibits distinct histological differences compared to normal brain tissue: marked cellular heterogeneity, variable fibroblast composition, disorganised spatial architecture. I therefore optimised the Slide-seq protocol for use in breast cancer, with a specific focus on optimising RNA hydribidisation onto the spatial beads. RNA hybridisation involves conflicting factors: sufficient duration to allow for adequate RNA capture whilst maintaining adequate spatial resolution without excessive lateral diffusion of RNA.
 
 In murine brain tissue, RNA hydridisation is performed for 15 minutes. In breast tissue, I explored a range of durations for RNA hybridisation: 15, 30, 45, 60, 75, 90 and 105 minutes.
 
-Clinical tumour tissue is valuable. The use of clinical tissue must fulfil additional ethical and practical requirements in using patient donated material. Therefore, for protocol optimisation, I used a xenograft sample acquired from Prof. Harris' extensive tissue biobank. The xenograft sample selected was generated from MDA-MB-231 breast cancer cell line. a triple receptor breast cancer cell line, treated with PBS in BALB/c nude mice (experiment ID JLI-164, sample 6).
+Clinical tumour tissue is valuable. The use of clinical tissue must fulfil additional ethical and practical requirements when using patient donated material. Therefore, for protocol optimisation, I used a xenograft sample acquired from Prof. Harris' extensive tissue biobank. The xenograft sample selected was generated from the MDA-MB-231 breast cancer cell line. a triple receptor breast cancer cell line, treated with PBS in BALB/c nude mice (experiment ID: JLI-164, sample 6).
 
 Each xenograft sample consists of a FFPE and fresh frozen matched pair. Sample selection was based on high carbonic anhydrase 9 (CA9) expression in FFPE tissue and the downstream Slide-seq protocol was conducted on the matched fresh frozen tissue. FFPE preservation allows for better maintenance of spatial architecture which facilitated sample selection. An optimised protocol for CA9 immunohistochemistry on FFPE tissue was also readily available.
 
-The quality of RNA hydridisation onto the spatially-profiled beads was assessed using the Agilent high sensitivity DNA kit prior to library preparation. RNA hydridisation increased up to peak quality observed with 60 minutes hydridisation, after which RNA capture quality demonstrated variable decline [IMAGES OF BIOANALYZER RESULTS]. Therefore, all subsequent Slide-seq experiments in breast cancer tissue used the modified 60 minutes RNA hydridisation condition.
+The quality of RNA hydridisation onto the spatially-profiled beads was assessed using the Agilent high sensitivity DNA kit prior to library preparation. RNA hydridisation increased up to peak quality with 60 minutes hydridisation, after which RNA capture quality demonstrated variable decline as shown in figures \ref{fig:ss_04_15_min} to \ref{fig:ss_05_105_min}. All subsequent Slide-seq experiments with breast cancer tissue used the modified 60 minutes RNA hydridisation condition.
+
+\begin{figure}[ht]
+	\begin{subfigure}
+		\centering
+		% include first image
+		\includegraphics[width=.8\linewidth]{figures/ss_04_15_min.png}  
+		\caption[Slide-seq optimisation: 15 minutes]{15 minutes}
+		\label{fig:ss_04_15_min}
+	\end{subfigure}
+	\begin{subfigure}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{figures/ss_04_30_min.png}  
+		\caption{30 minutes}
+		\label{fig:ss_04_30_min}
+	\end{subfigure}
+	\begin{subfigure}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{figures/ss_04_45_min.png}  
+		\caption{45 minutes}
+		\label{fig:ss_04_45_min}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}[ht]
+	\begin{subfigure}
+		\centering
+		% include first image
+		\includegraphics[width=.8\linewidth]{figures/ss_04_60_min.png}  
+		\caption{60 minutes}
+		\label{fig:ss_04_60_min}
+	\end{subfigure}
+	\begin{subfigure}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{figures/ss_05_75_min.png}  
+		\caption{75 minutes}
+		\label{fig:ss_05_75_min}
+	\end{subfigure}
+	\begin{subfigure}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{figures/ss_05_90_min.png}  
+		\caption{90 minutes}
+		\label{fig:ss_05_90_min}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}[ht]
+	\begin{subfigure}
+		\centering
+		% include first image
+		\includegraphics[width=.8\linewidth]{figures/ss_05_105_min.png}  
+		\caption{105 minutes}
+		\label{fig:ss_05_105_min}
+	\end{subfigure}
+\end{figure}
+
+
 
 The slide-seq optimisation experiment was completed in March 2020. All work stopped in March 2020 owing to the UK national lockdown due to the COVID-19 pandemic. The laboratory areas started to re-open in June 2020. Between June 2020 - December 2020, I explored multiple diverse avenues to enable the Slide-seq work to restart. The pre-pandemic experiments required working on multiple sites, using critical equipment housed in different institutions and coordinating with team members from within and outside my group. In January 2021, it was possible to attempt one run of the Slide-seq experiment. The experimental timing coincided with the beginning of the third UK national lockdown. 
 
 Four fresh frozen breast cancer biopsy specimens acquired from three patients were utilised for spatial transcriptomic profiling using the breast cancer optimised protocol. Twenty breast cancer specimens were evaluated for general histological quality by hematoxylin and eosin  staining from which the most suitable samples were selected. The H{\&}E evaluation of the samples are shown in figure XX [H{\&} OF SLIDESEQ BIOPSIES].
 
-Good quality sequencing libraries were generated from all four biopsies [BIOANALZYER IMAGES POST NEXTERA LIBRARY GENERATION]. Sequencing has been completed. Sequencing data was transferred to the Macosko lab, Broad Institute in March 2021 for the generation of spatially-profiled gene expression matrices suitable for downstream analysis and evaluation. The return of data is being awaited and will warrant analysis once available.
+Good quality sequencing libraries were generated from all four biopsies as demonstrated in figures \ref{fig:ss_09_bc_18_3} to \ref{fig:ss_09_bc_23_4}. Sequencing has been completed. Sequencing data was transferred to the Macosko lab, Broad Institute in March 2021 for the generation of spatially-profiled gene expression matrices suitable for downstream analysis and evaluation. The spatial gene expression matrices were available from 8th July 2021 and will warrant further analysis.
+
+\begin{figure}[ht]
+	\begin{subfigure}
+		\centering
+		% include first image
+		\includegraphics[width=.8\linewidth]{figures/ss_09_bc_18_3.png}  
+		\caption{Sample BC\_18\_3}
+		\label{fig:ss_09_bc_18_3}
+	\end{subfigure}
+	\begin{subfigure}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{figures/ss_09_bc_20_2.png}  
+		\caption{Sample BC\_20\_2}
+		\label{fig:ss_09_bc_20_2}
+	\end{subfigure}
+	\begin{subfigure}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{figures/ss_09_bc_20_4.png}  
+		\caption{Sample BC\_20\_4}
+		\label{fig:ss_09_bc_20_4}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}[ht]
+	\begin{subfigure}
+		\centering
+		% include first image
+		\includegraphics[width=.8\linewidth]{figures/ss_09_bc_23_4.png}  
+		\caption{Sample BC\_23\_4}
+		\label{fig:ss_09_bc_23_4}
+	\end{subfigure}
+
+\end{figure}
 
 In April 2021, I had arranged access to an additional collection of Slide-seq spatial slides to enable spatial transcriptomic evaluation of a larger collection of samples. 
 Dr. Esther Bridges was a key research scientist involved in my project who conducted tissue sectioning onto the spatial slides. Dr. Bridges has transferred to a new post and no alternative options were available. It was therefore not possible to proceed further with the additional set of spatial slides.
@@ -109,15 +194,36 @@ Dr. Esther Bridges was a key research scientist involved in my project who condu
 \subsubsection{Modelling of Bead Packing Density in Slide-seq}
 The technology platforms underpinning the emerging field of spatial transcriptomics are continuing to evolve. Most options to date are produced or performed within academic settings with significant costs per sample. The maximisation of output and the availability of quality control metrics for spatial slide production will become increasingly important as spatial transcriptomic techniques become more widely adopted by the research community.
 
-Slide-seq pucks consist of 3 mm diameter circles consisting of packed 10 $\mu$m custom circular polysytrene beads deposited within the central circular region. Thue's theorem states that 'no packing of non-overlapping discs of equal size in the plane has density higher than that of the hexagonal packing'. The optimal packing density is $\frac{\pi \sqrt{3}}{6} = 0.91$. Thue's theorem is an extension of Kepler's conjecture in the 2D setting. An unresolved debate remains within mathematical community on the demonstration of a formal proof of Kepler's conjecture.
+The effective working area of a Slide-seq puck is a 3 mm diameter circle, containing 10 $\mu$m packed custom circular polysytrene beads deposited within this central circular region. Thue's theorem states that 'no packing of non-overlapping discs of equal size in the plane has density higher than that of the hexagonal packing'. The optimal packing density is $\frac{\pi \sqrt{3}}{6} = 0.91$. Thue's theorem is an extension of Kepler's conjecture in the 2D setting. An unresolved debate remains within mathematical community on the demonstration of a formal proof of Kepler's conjecture.
 
-I calculated the total number of beads per puck using the particle counting package in ImageJ. Using the assumption that each polysytrene bead is a 10 $\mu$m circle and the puck is a 3 mm circle, I calculated the packing efficiency for each bead. The per puck and per batch summary statistics are detailed in tables [XX] [TABLE OF SUMMARY STATS].
+I calculated the total number of beads per puck using the particle counting package in ImageJ. Using the assumption that each polysytrene bead is a 10 $\mu$m circle and the puck is a 3 mm circle, I calculated the packing efficiency for each bead. The per puck and per batch summary statistics are detailed in tables. Across the batch of four pucks, the packing efficiency was 0.72 $\pm$ 0.05.
+
+\begin{table}[ht]
+	\centering
+	\small
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|l| c | c | c | c |}
+		\hline
+		Puck ID	&  Bead Number & Packing Efficiency & Efficiency Gap  \\
+		\hline
+		16 	& 66215 & 0.74 & 0.17  		\\
+		
+		17 	& 59299 & 0.66 & 0.25  		\\
+		
+		18 	& 68844 & 0.76 & 0.14 		\\
+		
+		19 	& 63787 & 0.71 & 0.20 		\\
+		\hline
+	\end{tabular}
+	\caption{Packing Efficiency of Spatial Beads on Puck}
+	\label{tab: puck_bead_packing_efficiency}
+\end{table}
 
 
 Future follow-up work would include evaluation of the packing efficiency threshold as a quality control metric applicable in industrial production of pucks. The number of beads per puck could also be integrated as a normalisation factor for the downstream analysis pipeline.
 
 \subsubsection{Analysis of Slide-seq Profiling in Breast Cancer}
-Data required for the completion of this section is pending owing to the exceptional delays and disruption caused by the pandemic. 
+The Slide-seq spatial gene expression matrices were available from July 2021. The data analysis is at a very early stage and it is not available for incorporation into the thesis owing to the exceptional delays and disruption caused by the pandemic. 
 
 \subsubsection{Application and Comparison of Hypoxia Signatures in Slide-seq Findings}
 Data required for the completion of this section is pending owing to the exceptional delays and disruption caused by the pandemic. 
@@ -126,6 +232,10 @@ Data required for the completion of this section is pending owing to the excepti
 Data required for the completion of this section is pending owing to the exceptional delays and disruption caused by the pandemic. 
 
 \subsection{Application of Single Cell Laser Capture Microdissection in Breast Cancer}
+Laser capture microdissection (LCM) is a specialised laboratory technique which requires access to dedicated microdissection units. During the course of the DPhil, I underwent a comprehensive training program for laser capture microdissection including formal guidance from the technology manufacturer, Zeis between July - October 2019. Access to the microdissection unit has been restricted following the pandemic owing to health and safety limitations. Therefore, in collaboration with Dr. Neil Ashley at the Weatherall Institute of Molecular Medicine, I established a legal agreement with Fludigm, a commercial producer of IR-based microdissection units. The WIMM is considering purchase of a Fluidigm Acculift unit. Therefore, a pilot study was negotiated with Fluidigm in which 8 microdissected regions on one human sample would be performed by the Fluidigm technical team in Florida, USA free-of-charge.
+
+The pilot study was under negotiation between July - October 2020 and the legal agreement was finalised in December 2020. Tissue samples were shipped in January 2021 and microdissection completed in July 2021. It is aimed that microdissected samples will be delivered to Dr. Neil Ashley in July 2021 for evaluation of RNA extraction from single cell or 5 $\mu$m tissue regions.
+
 \subsubsection{Tumour and Immune Extraction in Breast Cancer at Single Cell Resolution}
 Data required for the completion of this section is pending owing to the exceptional delays and disruption caused by the pandemic. 
 
@@ -145,20 +255,71 @@ In September 2020, ReadCoor was acquired by 10X Genomics which required a new le
 
 In addition to a tumour-immune panel, I also negotiated a personalised hypoxia-specific 48-gene panel as part of the study review process with CARTANA. The hypoxia panel was optimised free-of-charge by the CARTANA technical team in Sweden for breast cancer FFPE tissue. 
 
-I used an evidence based approach for target selection in the hypoxia specific panel using my in-house unpublished and published \cite{2017_nat_comm_chung} breast cancer single cell sequencing data. Genetic targets which fulfilled the following two features were included in the hypoxia panel: \
+I used an evidence based approach for target selection in the hypoxia specific panel using my in-house unpublished and published \cite{Chung2017} breast cancer single cell sequencing data. Genetic targets which fulfilled the following two features were included in the hypoxia panel: \
 i. Targets exhibiting a predominant non-zero distribution pattern.
 A major challenge in single cell datasets is the commonly observed zero-inflated distribution expression patterns.
 ii. Targets exhibiting a non-uniform distribution profile in order to allow for investigation of spatial heterogeneity.
 
-Figures X and X demonstrate expression profiles of selected and deselected genetic targets which are associated with the transcriptional response to hypoxia.
+Figures \ref{fig:cartana_pgk1_breco} to \ref{fig:cartana_pfkfb4_gse7568} demonstrate expression profiles of selected and deselected genetic targets which are associated with the transcriptional response to hypoxia. Hypoxia target PGK1 (phosphoglycerate kinase 1) was positively selected and target PFKFB4 (6-Phosphofructo-2-Kinase/Fructose-2,6-Biphosphatase 4) was negatively selected.
 
-Target selected: PGK1
-Target deselected: PFKFB4
+% https://shantoroy.com/latex/add-subfig-in-latex/
+\begin{figure}[ht]
+	\begin{subfigure}
+		\centering
+		% include first image
+		\includegraphics[width=.8\linewidth]{figures/scs3_Gene_PGK1_ENSG00000102144.png}  
+		\caption{PGK1 Expression in Sample BRECO.BC18}
+		\label{fig:cartana_pgk1_breco}
+	\end{subfigure}
+	\begin{subfigure}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{figures/gse7568_Gene_PGK1_ENSG00000102144.png}  
+		\caption{PGK1 Expression from GSE7568}
+		\label{fig:cartana_pgk1_gse7568}
+	\end{subfigure}
+	\label{fig:cartana_pgk1}
+\end{figure}	
 
-Samples were selected for the pilot study based on carbonic anhydrase 9 (CA9) expression. All samples were collected from the Oxford Radcliffe Biobank collection, screened by hormone receptor and HER2 status and only triple receptor negative breast cancer samples were selected. Samples BBP-1467 and BBP-1557 [FIG OF CA9 IHC] exhibited well-circumscribed regions of hypoxia as defined by CA9 expression and were therefore selected for the pilot study.
+
+\begin{figure}[ht]
+		\begin{subfigure}
+		\centering
+		% include first image
+		\includegraphics[width=.8\linewidth]{figures/scs3_Gene_PFKFB4_ENSG00000114268.png}  
+		\caption{PFKFB4 Expression in Sample BRECO.BC18}
+		\label{fig:cartana_pfkfb4_breco}
+	\end{subfigure}
+	\begin{subfigure}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{figures/gse7568_Gene_PFKFB4_ENSG00000114268.png}  
+		\caption{PFKFB4 Expression from GSE7568}
+		\label{fig:cartana_pfkfb4_gse7568}
+	\end{subfigure}
+\end{figure}
+
+
+Samples were selected for the pilot study based on carbonic anhydrase 9 (CA9) expression. All samples were collected from the Oxford Radcliffe Biobank collection, screened by hormone receptor and HER2 status and only triple receptor negative breast cancer samples were selected. Samples BBP-1467 and BBP-1557, demonstrated in figures \ref{fig:readcoor_htrn3_1467_ca9} and \ref{fig:readcoor_htrn3_1556_ca9}, exhibited well-circumscribed regions of hypoxia as defined by CA9 expression and were therefore selected for the pilot study.
+
+\begin{figure}[ht]
+	\begin{subfigure}
+		\centering
+		% include first image
+		\includegraphics[width=.8\linewidth]{figures/readcoor_TRN3_1467_CA9_LowRes.png}  
+		\caption{CA9 expression in BBP-1467}
+		\label{fig:readcoor_htrn3_1467_ca9}
+	\end{subfigure}
+	\begin{subfigure}
+		\centering
+		% include second image
+		\includegraphics[width=.8\linewidth]{figures/readcoor_TRN3_1557_CA9_LowRes.png}  
+		\caption{CA9 expression in BBP-1556}
+		\label{fig:readcoor_htrn3_1556_ca9}
+	\end{subfigure}
+\end{figure}
 
 The experimental component of this project was completed by the end of March 2021.
-
 
 \subsubsection{Analysis of In Situ Sequencing Data in Breast Cancer}
 The analysis of the CARTANA data is at a very early stage and it is not available for incorporation into the thesis owing to the exceptional delays and disruption caused by the pandemic. 
@@ -167,7 +328,9 @@ The analysis of the CARTANA data is at a very early stage and it is not availabl
 Data required for the completion of this section is pending owing to the exceptional delays and disruption caused by the pandemic. 
 
 \section{Discussion}
-I made steps to select most appropriate emerging spatial transcriptomic technology and apply these methods to clinical breast cancer samples. 
-Further insights can be gained once the data is available or preliminary analysis has been completed on the available data.
+I made steps to select the most appropriate emerging spatial transcriptomic technology and to apply these methods to clinical breast cancer samples. During the course of my DPhil, I established Slide-seq, a novel spatial transcriptomic experimental pipeline using clinical samples which I collected from within Oxfordshire. The application of spatial transcriptomic technologies requires tissue-specific optimisation to ensure consistent and unbiased RNA capture given inherent histological heterogeneity. Further insights can be gained once preliminary analysis is completed on the available data.
+
+The use of novel sequencing technologies during the course of a pandemic presents additional significant limitations. The established spatial transcriptomic framework could be explored in future projects in the post-pandemic climate.
+
 
 
